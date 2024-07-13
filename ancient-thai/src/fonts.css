@@ -1,0 +1,7 @@
+@font-face {
+    font-family: 'Laisuethai'; /* Give your font a name */
+    src: url('../public/fonts/Laisuethai.ttf') format('truetype'); /* Path to your .ttf file */
+    /* You can include more src entries for different formats (e.g., woff, woff2) */
+    font-weight: normal;
+    font-style: normal;
+  }
