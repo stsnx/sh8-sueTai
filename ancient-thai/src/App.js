@@ -1,5 +1,4 @@
 import React, { useState,useEffect } from 'react';
-import ReactPlayer from 'react-player';
 import audioFile from './resources/kazuya.mp3';
 import './App.css';
 
@@ -7,10 +6,15 @@ function App() {
   const [displayText, setDisplayText] = useState('');
   const audioRef = React.useRef(null);
   useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.play();
+    const playPromise = audioRef.current.play();
+
+    // Handling autoplay failure due to browser policies
+    if (playPromise !== undefined) {
+      playPromise.catch(error => {
+        console.error('Autoplay was prevented:', error);
+      });
     }
-  }, []);
+  }, [displayText]);
   
   const handleChange =async (e) => {
     if (displayText != '') {
